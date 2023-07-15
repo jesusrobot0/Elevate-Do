@@ -1,0 +1,4 @@
+.app__header {
+  margin-top: var(--big-space);
+  margin-bottom: var(--big-space);
+}

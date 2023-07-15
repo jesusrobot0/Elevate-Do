@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: auto;
+  box-sizing: border-box;
+}
+
+:root {
+  --big-space: 30px;
+  --medium-space: 20px;
+  --small-space: 10px;
+  --white: #fff;
+  --medium-br: 16px;
+}
+
+body {
+  font-family: system-ui, -apple-system, Arial, Helvetica, sans-serif;
+  background-color: #ececec;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}

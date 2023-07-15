@@ -1,0 +1,23 @@
+.navbar {
+  padding: var(--medium-space);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--medium-br);
+  background: var(--white);
+}
+
+.navbar__title {
+  letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: var(--medium-space);
+  }
+
+  .navbar__title {
+    font-size: 1.6rem;
+  }
+}
