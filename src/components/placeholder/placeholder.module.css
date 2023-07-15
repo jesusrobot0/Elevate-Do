@@ -6,7 +6,7 @@
 
 .placeholder__icon {
   margin-bottom: var(--medium-space);
-  color: rgba(30, 143, 255, 0.267);
+  color: rgba(30, 143, 255, 0.4);
 }
 
 .placeholder h3 {
