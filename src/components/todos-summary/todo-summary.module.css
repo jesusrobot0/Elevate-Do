@@ -1,0 +1,10 @@
+.todo-summary__title {
+  margin-bottom: var(--small-space);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.todo-summary__details {
+  color: #666;
+  line-height: 1;
+}
