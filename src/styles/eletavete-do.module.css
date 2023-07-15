@@ -11,6 +11,7 @@
 
 .app__sidebar {
   width: 35%;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   gap: var(--medium-space);

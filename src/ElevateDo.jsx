@@ -1,4 +1,5 @@
 import { Navbar } from './components/nav-bar/Navbar'
+import { Form } from './components/form/Form'
 import styles from './styles/eletavete-do.module.css'
 
 export function ElevateDo() {
@@ -8,7 +9,9 @@ export function ElevateDo() {
         <Navbar />
       </header>
       <div className={`wrapper ${styles.app__body}`}>
-        <aside className={styles.app__sidebar}>FORM</aside>
+        <aside className={styles.app__sidebar}>
+          <Form />
+        </aside>
         <main className={styles.app__main}>MAIN APP</main>
       </div>
     </>
