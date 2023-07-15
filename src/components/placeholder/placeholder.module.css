@@ -1,0 +1,18 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.placeholder__icon {
+  margin-bottom: var(--medium-space);
+  color: rgba(30, 143, 255, 0.267);
+}
+
+.placeholder h3 {
+  margin-bottom: var(--small-space);
+}
+
+.placeholder p {
+  color: #666;
+}
