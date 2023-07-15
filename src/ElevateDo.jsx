@@ -7,6 +7,10 @@ export function ElevateDo() {
       <header className={`wrapper ${styles.app__header}`}>
         <Navbar />
       </header>
+      <div className={`wrapper ${styles.app__body}`}>
+        <aside className={styles.app__sidebar}>FORM</aside>
+        <main className={styles.app__main}>MAIN APP</main>
+      </div>
     </>
   )
 }
