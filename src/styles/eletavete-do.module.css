@@ -21,7 +21,7 @@
   width: 65%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .app__header {
     margin-top: var(--medium-space);
     margin-bottom: var(--medium-space);
