@@ -1,4 +1,4 @@
-import { Navbar } from './components/navbar/Navbar'
+import { Navbar } from './components/nav-bar/Navbar'
 import styles from './styles/eletavete-do.module.css'
 
 export function ElevateDo() {
