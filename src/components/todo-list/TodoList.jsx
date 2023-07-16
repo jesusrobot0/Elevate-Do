@@ -5,12 +5,14 @@ import { Placeholder } from '../placeholder/Placeholder'
 import styles from './todo-list.module.css'
 
 export function TodoList({ todos }) {
+  const todosUnCompleted = todos.filter((todo) => todo.status === false)
+
   return (
     <div className={styles['todo-list']}>
       <TodoSummary todos={todos} />
       {todos.length !== 0 ? (
         <>
-          {todos.map((todo) => (
+          {todosUnCompleted.map((todo) => (
             <TodoItem key={todo.id} {...todo} />
           ))}
         </>
