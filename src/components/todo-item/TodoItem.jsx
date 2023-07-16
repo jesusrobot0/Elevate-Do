@@ -17,31 +17,31 @@ export function TodoItem({ date, title, description }) {
         </button>
       </div>
       <div className={styles['todo-item__body']}>
-        <div className={styles['todo-item__header']}>
-          <h3>{title}</h3>
-          <div className={styles['todo-item__toggle-button']}>
-            <button onClick={() => setIsOpen(!isOpen)}>
-              <MoreHorizontal />
-            </button>
-            {isOpen && (
-              <ul className={styles['todo-item__toggle-list']}>
-                <li>
-                  <button>
-                    <Edit2 className={styles['todo-item__icon']} /> Edit
-                  </button>
-                </li>
-                <li>
-                  <button className={styles['todo-item__delete-button']}>
-                    <Trash className={styles['todo-item__icon']} />
-                    Delete
-                  </button>
-                </li>
-              </ul>
-            )}
-          </div>
-        </div>
+        <h3>{title}</h3>
         <p className={styles['todo-item__date']}>Created at: {formattedDate}</p>
         <p className={styles['todo-item__description']}>{description}</p>
+      </div>
+      <div className={styles['todo-item__actions']}>
+        <div className={styles['todo-item__toggle-button']}>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <MoreHorizontal />
+          </button>
+          {isOpen && (
+            <ul className={styles['todo-item__toggle-list']}>
+              <li>
+                <button>
+                  <Edit2 className={styles['todo-item__icon']} /> Edit
+                </button>
+              </li>
+              <li>
+                <button className={styles['todo-item__delete-button']}>
+                  <Trash className={styles['todo-item__icon']} />
+                  Delete
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   )
