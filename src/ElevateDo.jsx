@@ -6,22 +6,37 @@ import styles from './styles/eletavete-do.module.css'
 
 export function ElevateDo() {
   const [todos, setTodos] = useState([])
+  const [searchResults, setSearchResults] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleAddTodo = (newTodo) => {
     setTodos([...todos, newTodo])
   }
 
+  const handleAddSearchResult = (results) => {
+    setSearchResults(results)
+  }
+
   return (
     <>
       <header className={`wrapper ${styles.app__header}`}>
-        <Navbar />
+        <Navbar
+          todos={todos}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onSearch={handleAddSearchResult}
+        />
       </header>
       <div className={`wrapper ${styles.app__body}`}>
         <aside className={styles.app__sidebar}>
           <Form onNewTodo={handleAddTodo} />
         </aside>
         <main className={styles.app__main}>
-          <TodoList todos={todos} />
+          <TodoList
+            todos={todos}
+            searchQuery={searchQuery}
+            searchResults={searchResults}
+          />
         </main>
       </div>
     </>

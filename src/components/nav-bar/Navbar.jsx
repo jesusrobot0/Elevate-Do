@@ -1,11 +1,24 @@
+import PropTypes from 'prop-types'
 import { SearchBar } from '../search-bar/SearchBar'
 import styles from './nav-bar.module.css'
 
-export function Navbar() {
+export function Navbar({ todos, onSearch, searchQuery, setSearchQuery }) {
   return (
     <nav className={styles.navbar}>
       <h1 className={styles.navbar__title}>EletaveToDo</h1>
-      <SearchBar />
+      <SearchBar
+        todos={todos}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearch={onSearch}
+      />
     </nav>
   )
+}
+
+Navbar.propTypes = {
+  todos: PropTypes.array.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
 }
