@@ -7,7 +7,7 @@ import styles from './todo-list.module.css'
 export function TodoList({ todos }) {
   return (
     <div className={styles['todo-list']}>
-      <TodoSummary />
+      <TodoSummary todos={todos} />
       {todos.length !== 0 ? (
         <>
           {todos.map((todo) => (
