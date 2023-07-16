@@ -1,0 +1,75 @@
+.todo-item {
+  padding: var(--medium-space);
+  display: flex;
+  gap: var(--medium-space);
+  border-radius: var(--medium-br);
+  background: var(--white);
+}
+
+.todo-item__checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.todo-item__checkbox button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.todo-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-item__toggle-button {
+  position: relative;
+}
+
+.todo-item__icon {
+  width: 1rem;
+  display: block;
+}
+
+.todo-item__toggle-button button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.todo-item__delete-button {
+  color: red;
+}
+
+.todo-item__toggle-list {
+  width: 150px;
+  padding-left: 0;
+  position: absolute;
+  right: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  list-style: none;
+  background: var(--white);
+}
+
+.todo-item__toggle-list li {
+  padding: 10px 5px;
+}
+
+.todo-item__toggle-list li:first-child {
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-item__date {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.todo-item__description {
+  line-height: 1.4;
+}
