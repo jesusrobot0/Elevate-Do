@@ -21,7 +21,7 @@ export function ElevateDo() {
           <Form onNewTodo={handleAddTodo} />
         </aside>
         <main className={styles.app__main}>
-          <TodoList />
+          <TodoList todos={todos} />
         </main>
       </div>
     </>

@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Edit2, Square, Trash, CheckSquare, MoreHorizontal } from 'lucide-react'
 import styles from './todo-item.module.css'
 
-export function TodoItem() {
+export function TodoItem({ date, title, description }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
+
+  const formattedDate = date.toLocaleDateString()
+
   return (
     <div className={styles['todo-item']}>
       <div className={styles['todo-item__checkbox']}>
@@ -14,7 +18,7 @@ export function TodoItem() {
       </div>
       <div className={styles['todo-item__body']}>
         <div className={styles['todo-item__header']}>
-          <h3>Lorem ipsum dolor sit amet.</h3>
+          <h3>{title}</h3>
           <div className={styles['todo-item__toggle-button']}>
             <button onClick={() => setIsOpen(!isOpen)}>
               <MoreHorizontal />
@@ -36,13 +40,15 @@ export function TodoItem() {
             )}
           </div>
         </div>
-        <p className={styles['todo-item__date']}>Created at: 15/07/2023</p>
-        <p className={styles['todo-item__description']}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-          architecto quisquam maiores et. Enim aliquid corrupti eius dolores
-          accusamus sunt eaque laudantium illo corporis commodi?
-        </p>
+        <p className={styles['todo-item__date']}>Created at: {formattedDate}</p>
+        <p className={styles['todo-item__description']}>{description}</p>
       </div>
     </div>
   )
+}
+
+TodoItem.propTypes = {
+  date: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
