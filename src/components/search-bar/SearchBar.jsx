@@ -18,7 +18,7 @@ export function SearchBar({ todos, onSearch, searchQuery, setSearchQuery }) {
   }, [searchQuery])
 
   return (
-    <form className={styles['search-bar']}>
+    <form className={styles['search-bar']} onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"
         className={styles['search-bar__input']}
