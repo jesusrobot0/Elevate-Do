@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import { nanoid } from 'nanoid'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { nanoid } from 'nanoid'
+import { ErrorForm } from '../error-form/ErrorForm.jsx'
+
 import styles from './form.module.css'
 
 export function Form({ onNewTodo }) {
@@ -13,6 +15,7 @@ export function Form({ onNewTodo }) {
   }
 
   const [todo, setTodo] = useState(initialTodo)
+  const [error, setError] = useState(false)
 
   const handleChange = (event) => {
     setTodo({
@@ -24,12 +27,31 @@ export function Form({ onNewTodo }) {
   const handleSubtmit = (event) => {
     event.preventDefault()
 
+    if (todo.title.trim() === '') {
+      setError(true)
+      return
+    }
+
     todo.id = nanoid()
     todo.date = new Date()
 
     onNewTodo(todo)
     setTodo(initialTodo)
+    setError(false)
   }
+
+  useEffect(() => {
+    let timer
+    if (error) {
+      timer = setTimeout(() => {
+        setError(false)
+      }, 2000)
+    }
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [error])
 
   return (
     <form className={styles.form} onSubmit={handleSubtmit}>
@@ -58,6 +80,7 @@ export function Form({ onNewTodo }) {
           onChange={handleChange}
         ></textarea>
       </div>
+      {error && <ErrorForm message="The title field is required" />}
       <input type="submit" value="Save" className={styles.form__button} />
     </form>
   )
