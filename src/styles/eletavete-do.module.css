@@ -18,6 +18,7 @@
 
 .app__main {
   width: 65%;
+  margin-bottom: var(--big-space);
 }
 
 @media (max-width: 900px) {
