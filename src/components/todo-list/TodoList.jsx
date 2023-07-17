@@ -22,7 +22,11 @@ export function TodoList({ todos, searchQuery, searchResults }) {
               ))}
             </>
           ) : (
-            <Placeholder />
+            <Placeholder
+              type="todos"
+              title="It looks like you still dont have anything to do"
+              description="Start by adding a new one"
+            />
           )}
         </>
       ) : (
@@ -34,7 +38,10 @@ export function TodoList({ todos, searchQuery, searchResults }) {
               ))}
             </>
           ) : (
-            <Placeholder />
+            <Placeholder
+              type="search"
+              title={`No results found for your search "${searchQuery}"`}
+            />
           )}
         </>
       )}
