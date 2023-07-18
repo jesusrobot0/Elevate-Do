@@ -53,4 +53,5 @@ TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
   searchQuery: PropTypes.string.isRequired,
   searchResults: PropTypes.array.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
 }

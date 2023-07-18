@@ -51,7 +51,9 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
 }
 
 TodoItem.propTypes = {
+  id: PropTypes.string.isRequired,
   date: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
 }
