@@ -25,7 +25,14 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
       </div>
       <div className={styles['todo-item__body']}>
         <h3>{title}</h3>
-        <p className={styles['todo-item__date']}>Created at: {formattedDate}</p>
+        <p
+          className={styles['todo-item__date']}
+          style={{
+            marginBottom: description !== '' ? '8px' : '0',
+          }}
+        >
+          Created at: {formattedDate}
+        </p>
         <p className={styles['todo-item__description']}>{description}</p>
       </div>
       <div className={styles['todo-item__actions']}>
