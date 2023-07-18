@@ -9,6 +9,13 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
 
   const formattedDate = date.toLocaleDateString()
 
+  const handleDelte = () => {
+    const questionResult = window.confirm('Are you sure to delete the todo?')
+    if (questionResult) onDeleteTodo(id)
+    setIsOpen(false)
+    return
+  }
+
   return (
     <div className={styles['todo-item']}>
       <div className={styles['todo-item__checkbox']}>
@@ -36,7 +43,7 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
               <li>
                 <button
                   className={styles['todo-item__delete-button']}
-                  onClick={() => onDeleteTodo(id)}
+                  onClick={handleDelte}
                 >
                   <Trash className={styles['todo-item__icon']} />
                   Delete
