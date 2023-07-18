@@ -13,6 +13,13 @@ export function ElevateDo() {
     setTodos([...todos, newTodo])
   }
 
+  const handleDeleteTodo = (id) => {
+    const todosUpdated = todos.filter((todo) => todo.id !== id)
+    console.log(id)
+
+    setTodos(todosUpdated)
+  }
+
   const handleAddSearchResult = (results) => {
     setSearchResults(results)
   }
@@ -36,6 +43,7 @@ export function ElevateDo() {
             todos={todos}
             searchQuery={searchQuery}
             searchResults={searchResults}
+            onDeleteTodo={handleDeleteTodo}
           />
         </main>
       </div>

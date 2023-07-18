@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Edit2, Square, Trash, CheckSquare, MoreHorizontal } from 'lucide-react'
 import styles from './todo-item.module.css'
 
-export function TodoItem({ date, title, description }) {
+export function TodoItem({ id, date, title, description, onDeleteTodo }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
 
@@ -34,7 +34,10 @@ export function TodoItem({ date, title, description }) {
                 </button>
               </li>
               <li>
-                <button className={styles['todo-item__delete-button']}>
+                <button
+                  className={styles['todo-item__delete-button']}
+                  onClick={() => onDeleteTodo(id)}
+                >
                   <Trash className={styles['todo-item__icon']} />
                   Delete
                 </button>

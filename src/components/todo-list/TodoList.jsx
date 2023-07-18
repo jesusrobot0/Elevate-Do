@@ -4,7 +4,7 @@ import { TodoItem } from '../todo-item/TodoItem'
 import { Placeholder } from '../placeholder/Placeholder'
 import styles from './todo-list.module.css'
 
-export function TodoList({ todos, searchQuery, searchResults }) {
+export function TodoList({ todos, searchQuery, searchResults, onDeleteTodo }) {
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
   const searchResultsUnCompleted = searchResults.filter(
     (todo) => todo.status === false
@@ -18,7 +18,7 @@ export function TodoList({ todos, searchQuery, searchResults }) {
           {todosUnCompleted.length !== 0 ? (
             <>
               {todosUnCompleted.map((todo) => (
-                <TodoItem key={todo.id} {...todo} />
+                <TodoItem key={todo.id} {...todo} onDeleteTodo={onDeleteTodo} />
               ))}
             </>
           ) : (
@@ -34,7 +34,7 @@ export function TodoList({ todos, searchQuery, searchResults }) {
           {searchResultsUnCompleted.length !== 0 ? (
             <>
               {searchResultsUnCompleted.map((todo) => (
-                <TodoItem key={todo.id} {...todo} />
+                <TodoItem key={todo.id} {...todo} onDeleteTodo={onDeleteTodo} />
               ))}
             </>
           ) : (
