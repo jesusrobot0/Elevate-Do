@@ -16,14 +16,17 @@ export function TodoItem({
 
   const formattedDate = date.toLocaleDateString()
 
-  const handleDelete = () => {
-    const questionResult = window.confirm('Are you sure to delete the todo?')
-    if (questionResult) onDeleteTodo(id)
-    setIsOpen(false)
-  }
+  const handleAction = (action) => {
+    const questionResult = window.confirm(
+      `Are you sure to ${action} this todo?`
+    )
 
-  const handleUpdate = () => {
-    onUpdateTodo(id)
+    if (questionResult && action === 'delete') {
+      onDeleteTodo(id)
+    } else if (questionResult && action === 'edit') {
+      onUpdateTodo(id)
+    }
+
     setIsOpen(false)
   }
 
@@ -54,14 +57,14 @@ export function TodoItem({
           {isOpen && (
             <ul className={styles['todo-item__toggle-list']}>
               <li>
-                <button onClick={handleUpdate}>
+                <button onClick={() => handleAction('edit')}>
                   <Edit2 className={styles['todo-item__icon']} /> Edit
                 </button>
               </li>
               <li>
                 <button
                   className={styles['todo-item__delete-button']}
-                  onClick={handleDelete}
+                  onClick={() => handleAction('delete')}
                 >
                   <Trash className={styles['todo-item__icon']} />
                   Delete
