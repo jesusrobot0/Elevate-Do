@@ -20,10 +20,8 @@ export function ElevateDo() {
 
   const handleAddTodo = (newTodo) => {
     if (!todoUpdated.id) {
-      console.log('NUEVO')
       setTodos([...todos, newTodo])
     } else {
-      console.log('ACTUALIZADO')
       const todosUpdated = todos.map((todo) =>
         todo.id === newTodo.id ? newTodo : todo
       )
@@ -35,8 +33,6 @@ export function ElevateDo() {
 
   const handleDeleteTodo = (id) => {
     const todosUpdated = todos.filter((todo) => todo.id !== id)
-    console.log(id)
-
     setTodos(todosUpdated)
   }
 
@@ -45,9 +41,7 @@ export function ElevateDo() {
   }
 
   const handleEditTodo = (id) => {
-    console.log(id)
     const todoSelected = todos.filter((todo) => todo.id === id)
-
     setTodoUpdated(todoSelected[0])
   }
 
