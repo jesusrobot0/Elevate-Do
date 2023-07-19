@@ -14,9 +14,9 @@ export function ElevateDo() {
   }
 
   const [todos, setTodos] = useState([])
+  const [todoUpdated, setTodoUpdated] = useState(initialTodo)
   const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
-  const [todoUpdated, setTodoUpdated] = useState(initialTodo)
 
   const handleAddTodo = (newTodo) => {
     if (!todoUpdated.id) {
@@ -36,26 +36,21 @@ export function ElevateDo() {
     setTodos(todosUpdated)
   }
 
-  const handleAddSearchResult = (results) => {
-    setSearchResults(results)
-  }
-
   const handleEditTodo = (id) => {
     const todoSelected = todos.filter((todo) => todo.id === id)
     setTodoUpdated(todoSelected[0])
   }
 
   const handleCompleteTodo = (id) => {
-    const todosUpdated = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.status = !todo.status
-        return todo
-      }
-
-      return todo
-    })
+    const todosUpdated = todos.map((todo) =>
+      todo.id === id ? { ...todo, status: !todo.status } : todo
+    )
 
     setTodos(todosUpdated)
+  }
+
+  const handleAddSearchResult = (results) => {
+    setSearchResults(results)
   }
 
   return (
