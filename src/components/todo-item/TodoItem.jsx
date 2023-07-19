@@ -16,11 +16,10 @@ export function TodoItem({
 
   const formattedDate = date.toLocaleDateString()
 
-  const handleDelte = () => {
+  const handleDelete = () => {
     const questionResult = window.confirm('Are you sure to delete the todo?')
     if (questionResult) onDeleteTodo(id)
     setIsOpen(false)
-    return
   }
 
   const handleUpdate = () => {
@@ -62,7 +61,7 @@ export function TodoItem({
               <li>
                 <button
                   className={styles['todo-item__delete-button']}
-                  onClick={handleDelte}
+                  onClick={handleDelete}
                 >
                   <Trash className={styles['todo-item__icon']} />
                   Delete
