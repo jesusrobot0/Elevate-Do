@@ -18,13 +18,12 @@ export function TodoItem({
   const formattedDate = date.toLocaleDateString()
 
   const handleAction = (action) => {
-    const questionResult = window.confirm(
-      `Are you sure to ${action} this todo?`
-    )
-
-    if (questionResult && action === 'delete') {
-      onDeleteTodo(id)
-    } else if (questionResult && action === 'edit') {
+    if (action === 'delete') {
+      const questionResult = window.confirm(
+        `Are you sure to ${action} this todo?`
+      )
+      if (questionResult) onDeleteTodo(id)
+    } else if (action === 'edit') {
       onUpdateTodo(id)
     }
 
