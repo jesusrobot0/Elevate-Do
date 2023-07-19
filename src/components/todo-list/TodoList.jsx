@@ -4,7 +4,13 @@ import { TodoItem } from '../todo-item/TodoItem'
 import { Placeholder } from '../placeholder/Placeholder'
 import styles from './todo-list.module.css'
 
-export function TodoList({ todos, searchQuery, searchResults, onDeleteTodo }) {
+export function TodoList({
+  todos,
+  searchQuery,
+  searchResults,
+  onDeleteTodo,
+  onUpdateTodo,
+}) {
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
   const searchResultsUnCompleted = searchResults.filter(
     (todo) => todo.status === false
@@ -18,7 +24,12 @@ export function TodoList({ todos, searchQuery, searchResults, onDeleteTodo }) {
           {todosUnCompleted.length !== 0 ? (
             <>
               {todosUnCompleted.map((todo) => (
-                <TodoItem key={todo.id} {...todo} onDeleteTodo={onDeleteTodo} />
+                <TodoItem
+                  key={todo.id}
+                  {...todo}
+                  onDeleteTodo={onDeleteTodo}
+                  onUpdateTodo={onUpdateTodo}
+                />
               ))}
             </>
           ) : (
@@ -34,7 +45,12 @@ export function TodoList({ todos, searchQuery, searchResults, onDeleteTodo }) {
           {searchResultsUnCompleted.length !== 0 ? (
             <>
               {searchResultsUnCompleted.map((todo) => (
-                <TodoItem key={todo.id} {...todo} onDeleteTodo={onDeleteTodo} />
+                <TodoItem
+                  key={todo.id}
+                  {...todo}
+                  onDeleteTodo={onDeleteTodo}
+                  onUpdateTodo={onUpdateTodo}
+                />
               ))}
             </>
           ) : (
@@ -54,4 +70,5 @@ TodoList.propTypes = {
   searchQuery: PropTypes.string.isRequired,
   searchResults: PropTypes.array.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
+  onUpdateTodo: PropTypes.func.isRequired,
 }

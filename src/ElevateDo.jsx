@@ -5,9 +5,18 @@ import { TodoList } from './components/todo-list/TodoList'
 import styles from './styles/eletavete-do.module.css'
 
 export function ElevateDo() {
+  const initialTodo = {
+    id: '',
+    date: '',
+    title: '',
+    description: '',
+    status: false,
+  }
+
   const [todos, setTodos] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
+  const [todoUpdated, setTodoUpdated] = useState(initialTodo)
 
   const handleAddTodo = (newTodo) => {
     setTodos([...todos, newTodo])
@@ -22,6 +31,13 @@ export function ElevateDo() {
 
   const handleAddSearchResult = (results) => {
     setSearchResults(results)
+  }
+
+  const handleEditTodo = (id) => {
+    console.log(id)
+    const todoSelected = todos.filter((todo) => todo.id === id)
+
+    setTodoUpdated(todoSelected[0])
   }
 
   return (
@@ -44,6 +60,7 @@ export function ElevateDo() {
             searchQuery={searchQuery}
             searchResults={searchResults}
             onDeleteTodo={handleDeleteTodo}
+            onUpdateTodo={handleEditTodo}
           />
         </main>
       </div>

@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import { Edit2, Square, Trash, CheckSquare, MoreHorizontal } from 'lucide-react'
 import styles from './todo-item.module.css'
 
-export function TodoItem({ id, date, title, description, onDeleteTodo }) {
+export function TodoItem({
+  id,
+  date,
+  title,
+  description,
+  onDeleteTodo,
+  onUpdateTodo,
+}) {
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
 
@@ -14,6 +21,11 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
     if (questionResult) onDeleteTodo(id)
     setIsOpen(false)
     return
+  }
+
+  const handleUpdate = () => {
+    onUpdateTodo(id)
+    setIsOpen(false)
   }
 
   return (
@@ -43,7 +55,7 @@ export function TodoItem({ id, date, title, description, onDeleteTodo }) {
           {isOpen && (
             <ul className={styles['todo-item__toggle-list']}>
               <li>
-                <button>
+                <button onClick={handleUpdate}>
                   <Edit2 className={styles['todo-item__icon']} /> Edit
                 </button>
               </li>
@@ -70,4 +82,5 @@ TodoItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
+  onUpdateTodo: PropTypes.func.isRequired,
 }
