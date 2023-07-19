@@ -10,6 +10,7 @@ export function TodoItem({
   description,
   onDeleteTodo,
   onUpdateTodo,
+  onCompleteTodo,
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
@@ -30,10 +31,15 @@ export function TodoItem({
     setIsOpen(false)
   }
 
+  const handleCheck = () => {
+    setIsChecked(!isChecked)
+    onCompleteTodo(id)
+  }
+
   return (
     <div className={styles['todo-item']}>
       <div className={styles['todo-item__checkbox']}>
-        <button onClick={() => setIsChecked(!isChecked)}>
+        <button onClick={handleCheck}>
           {isChecked ? <CheckSquare /> : <Square />}
         </button>
       </div>
@@ -85,4 +91,5 @@ TodoItem.propTypes = {
   description: PropTypes.string.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
   onUpdateTodo: PropTypes.func.isRequired,
+  onCompleteTodo: PropTypes.func.isRequired,
 }

@@ -10,6 +10,7 @@ export function TodoList({
   searchResults,
   onDeleteTodo,
   onUpdateTodo,
+  onCompleteTodo,
 }) {
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
   const searchResultsUnCompleted = searchResults.filter(
@@ -29,6 +30,7 @@ export function TodoList({
                   {...todo}
                   onDeleteTodo={onDeleteTodo}
                   onUpdateTodo={onUpdateTodo}
+                  onCompleteTodo={onCompleteTodo}
                 />
               ))}
             </>
@@ -50,6 +52,7 @@ export function TodoList({
                   {...todo}
                   onDeleteTodo={onDeleteTodo}
                   onUpdateTodo={onUpdateTodo}
+                  onCompleteTodo={onCompleteTodo}
                 />
               ))}
             </>
@@ -71,4 +74,5 @@ TodoList.propTypes = {
   searchResults: PropTypes.array.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
   onUpdateTodo: PropTypes.func.isRequired,
+  onCompleteTodo: PropTypes.func.isRequired,
 }

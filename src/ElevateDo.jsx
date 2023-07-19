@@ -45,6 +45,19 @@ export function ElevateDo() {
     setTodoUpdated(todoSelected[0])
   }
 
+  const handleCompleteTodo = (id) => {
+    const todosUpdated = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.status = !todo.status
+        return todo
+      }
+
+      return todo
+    })
+
+    setTodos(todosUpdated)
+  }
+
   return (
     <>
       <header className={`wrapper ${styles.app__header}`}>
@@ -66,6 +79,7 @@ export function ElevateDo() {
             searchResults={searchResults}
             onDeleteTodo={handleDeleteTodo}
             onUpdateTodo={handleEditTodo}
+            onCompleteTodo={handleCompleteTodo}
           />
         </main>
       </div>
