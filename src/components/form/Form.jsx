@@ -5,7 +5,7 @@ import { ErrorForm } from '../error-form/ErrorForm.jsx'
 
 import styles from './form.module.css'
 
-export function Form({ onNewTodo }) {
+export function Form({ todoUpdated, onNewTodo }) {
   const initialTodo = {
     id: '',
     date: '',
@@ -32,8 +32,10 @@ export function Form({ onNewTodo }) {
       return
     }
 
-    todo.id = nanoid()
-    todo.date = new Date()
+    if (!todoUpdated.id) {
+      todo.id = nanoid()
+      todo.date = new Date()
+    }
 
     onNewTodo(todo)
     setTodo(initialTodo)
@@ -52,6 +54,10 @@ export function Form({ onNewTodo }) {
       clearTimeout(timer)
     }
   }, [error])
+
+  useEffect(() => {
+    setTodo(todoUpdated)
+  }, [todoUpdated])
 
   return (
     <form className={styles.form} onSubmit={handleSubtmit}>
@@ -87,5 +93,6 @@ export function Form({ onNewTodo }) {
 }
 
 Form.propTypes = {
+  todoUpdated: PropTypes.object.isRequired,
   onNewTodo: PropTypes.func.isRequired,
 }

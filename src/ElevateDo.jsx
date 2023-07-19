@@ -19,7 +19,18 @@ export function ElevateDo() {
   const [todoUpdated, setTodoUpdated] = useState(initialTodo)
 
   const handleAddTodo = (newTodo) => {
-    setTodos([...todos, newTodo])
+    if (!todoUpdated.id) {
+      console.log('NUEVO')
+      setTodos([...todos, newTodo])
+    } else {
+      console.log('ACTUALIZADO')
+      const todosUpdated = todos.map((todo) =>
+        todo.id === newTodo.id ? newTodo : todo
+      )
+
+      setTodos(todosUpdated)
+      setTodoUpdated(initialTodo)
+    }
   }
 
   const handleDeleteTodo = (id) => {
@@ -52,7 +63,7 @@ export function ElevateDo() {
       </header>
       <div className={`wrapper ${styles.app__body}`}>
         <aside className={styles.app__sidebar}>
-          <Form onNewTodo={handleAddTodo} />
+          <Form todoUpdated={todoUpdated} onNewTodo={handleAddTodo} />
         </aside>
         <main className={styles.app__main}>
           <TodoList
