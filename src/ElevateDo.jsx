@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navbar } from './components/nav-bar/Navbar'
 import { Form } from './components/form/Form'
+import Contact from './components/contact/Contact'
 import { TodoList } from './components/todo-list/TodoList'
 import styles from './styles/eletavete-do.module.css'
 
@@ -66,6 +67,7 @@ export function ElevateDo() {
       <div className={`wrapper ${styles.app__body}`}>
         <aside className={styles.app__sidebar}>
           <Form todoUpdated={todoUpdated} onNewTodo={handleAddTodo} />
+          <Contact />
         </aside>
         <main className={styles.app__main}>
           <TodoList
