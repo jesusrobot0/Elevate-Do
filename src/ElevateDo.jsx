@@ -1,8 +1,5 @@
 import { useState } from 'react'
-import { Navbar } from './components/nav-bar/Navbar'
-import { Form } from './components/form/Form'
-import Contact from './components/contact/Contact'
-import { TodoList } from './components/todo-list/TodoList'
+import { Navbar, Form, Contact, TodoList } from './components'
 import styles from './styles/eletavete-do.module.css'
 
 export function ElevateDo() {

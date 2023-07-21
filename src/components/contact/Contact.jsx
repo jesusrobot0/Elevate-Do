@@ -1,6 +1,6 @@
 import styles from './Contact.module.css'
 
-export default function Contact() {
+export function Contact() {
   return (
     <p className={styles.contact__details}>
       Developed in 🇲🇽 with ❤️ by{' '}

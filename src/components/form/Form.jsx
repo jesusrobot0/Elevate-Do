@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid'
-import { ErrorForm } from '../error-form/ErrorForm.jsx'
+import { ErrorForm } from '../'
 
 import styles from './form.module.css'
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { SearchBar } from '../search-bar/SearchBar'
+import { SearchBar } from '../'
 import styles from './nav-bar.module.css'
 
 export function Navbar({ todos, onSearch, searchQuery, setSearchQuery }) {
