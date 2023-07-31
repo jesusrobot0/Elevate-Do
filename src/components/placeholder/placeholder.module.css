@@ -16,3 +16,9 @@
 .placeholder p {
   color: #666;
 }
+
+@media (max-width: 768px) {
+  .placeholder h3 {
+    text-align: center;
+  }
+}
