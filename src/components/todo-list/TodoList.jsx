@@ -18,9 +18,6 @@ export function TodoList({
   }
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
   const todosCompleted = todos.filter((todo) => todo.status === true)
-  const searchResultsUnCompleted = searchResults.filter(
-    (todo) => todo.status === false
-  )
 
   const todoList =
     selectedOption === 'uncompleted' ? todosUnCompleted : todosCompleted
@@ -63,9 +60,9 @@ export function TodoList({
         </>
       ) : (
         <>
-          {searchResultsUnCompleted.length !== 0 ? (
+          {searchResults.length !== 0 ? (
             <>
-              {searchResultsUnCompleted.map((todo) => (
+              {searchResults.map((todo) => (
                 <TodoItem
                   key={todo.id}
                   {...todo}
