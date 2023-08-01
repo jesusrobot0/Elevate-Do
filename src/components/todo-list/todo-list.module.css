@@ -3,3 +3,19 @@
   flex-direction: column;
   gap: var(--big-space);
 }
+
+.todo-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-list select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+}

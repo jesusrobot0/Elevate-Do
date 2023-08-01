@@ -7,13 +7,14 @@ export function TodoItem({
   id,
   date,
   title,
+  status,
   description,
   onDeleteTodo,
   onUpdateTodo,
   onCompleteTodo,
 }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(status)
   const formattedDate = new Date(date).toLocaleDateString()
 
   const handleAction = (action) => {
@@ -86,6 +87,7 @@ TodoItem.propTypes = {
   id: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  status: PropTypes.bool.isRequired,
   description: PropTypes.string.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,
   onUpdateTodo: PropTypes.func.isRequired,

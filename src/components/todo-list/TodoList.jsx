@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { TodoSummary, TodoItem, Placeholder } from '../'
 import styles from './todo-list.module.css'
@@ -10,19 +11,35 @@ export function TodoList({
   onUpdateTodo,
   onCompleteTodo,
 }) {
+  const [selectedOption, setSelectedOption] = useState('uncompleted') // Estado para almacenar el valor seleccionado
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value) // Actualiza el estado con el valor seleccionado
+  }
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
+  const todosCompleted = todos.filter((todo) => todo.status === true)
   const searchResultsUnCompleted = searchResults.filter(
     (todo) => todo.status === false
   )
 
+  const todoList =
+    selectedOption === 'uncompleted' ? todosUnCompleted : todosCompleted
+
   return (
     <div className={styles['todo-list']}>
-      <TodoSummary todos={todos} />
+      <div className={styles['todo-list__header']}>
+        <TodoSummary todos={todos} />
+        <select value={selectedOption} onChange={handleSelectChange}>
+          <option value="uncompleted">Uncompleted</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+
       {searchQuery === '' ? (
         <>
-          {todosUnCompleted.length !== 0 ? (
+          {todoList.length !== 0 ? (
             <>
-              {todosUnCompleted.map((todo) => (
+              {todoList.map((todo) => (
                 <TodoItem
                   key={todo.id}
                   {...todo}
@@ -35,7 +52,11 @@ export function TodoList({
           ) : (
             <Placeholder
               type="todos"
-              title="It looks like you still dont have anything to do"
+              title={
+                selectedOption === 'uncompleted'
+                  ? "Congratulations you have finished your to-do's"
+                  : "It looks like you still don't have anything to do"
+              }
               description="Start by adding a new one"
             />
           )}
