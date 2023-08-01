@@ -14,8 +14,7 @@ export function TodoItem({
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
-
-  const formattedDate = date.toLocaleDateString()
+  const formattedDate = new Date(date).toLocaleDateString()
 
   const handleAction = (action) => {
     if (action === 'delete') {
@@ -85,7 +84,7 @@ export function TodoItem({
 
 TodoItem.propTypes = {
   id: PropTypes.string.isRequired,
-  date: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onDeleteTodo: PropTypes.func.isRequired,

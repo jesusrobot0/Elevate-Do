@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navbar, Form, Contact, TodoList } from './components'
 import styles from './styles/eletavete-do.module.css'
+import { useEffect } from 'react'
 
 export function ElevateDo() {
   const initialTodo = {
@@ -11,7 +12,10 @@ export function ElevateDo() {
     status: false,
   }
 
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const todosFromLS = JSON.parse(window.localStorage.getItem('todos'))
+    return todosFromLS ?? []
+  })
   const [todoUpdated, setTodoUpdated] = useState(initialTodo)
   const [searchResults, setSearchResults] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -50,6 +54,10 @@ export function ElevateDo() {
   const handleAddSearchResult = (results) => {
     setSearchResults(results)
   }
+
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   return (
     <>
