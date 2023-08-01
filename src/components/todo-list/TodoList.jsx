@@ -11,22 +11,21 @@ export function TodoList({
   onUpdateTodo,
   onCompleteTodo,
 }) {
-  const [selectedOption, setSelectedOption] = useState('uncompleted') // Estado para almacenar el valor seleccionado
+  const [selectedOption, setSelectedOption] = useState('uncompleted')
 
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value) // Actualiza el estado con el valor seleccionado
-  }
   const todosUnCompleted = todos.filter((todo) => todo.status === false)
   const todosCompleted = todos.filter((todo) => todo.status === true)
+  const todoList = selectedOption === 'uncompleted' ? todosUnCompleted : todosCompleted
 
-  const todoList =
-    selectedOption === 'uncompleted' ? todosUnCompleted : todosCompleted
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value)
+  }
 
   return (
     <div className={styles['todo-list']}>
       <div className={styles['todo-list__header']}>
         <TodoSummary todos={todos} />
-        <select value={selectedOption} onChange={handleSelectChange}>
+        <select onChange={handleSelectChange}>
           <option value="uncompleted">Uncompleted</option>
           <option value="completed">Completed</option>
         </select>

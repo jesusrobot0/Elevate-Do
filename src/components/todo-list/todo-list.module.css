@@ -11,11 +11,23 @@
 }
 
 .todo-list select {
-  padding: 8px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: var(--medium-br);
   outline: none;
   cursor: pointer;
   background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .todo-list__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--big-space);
+    align-items: start;
+  }
+  .todo-list select {
+    font-size: 0.9rem;
+  }
 }
