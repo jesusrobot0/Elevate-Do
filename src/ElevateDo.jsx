@@ -21,12 +21,11 @@ export function ElevateDo() {
   const [searchQuery, setSearchQuery] = useState('')
 
   const handleAddTodo = (newTodo) => {
+    // Sí no se esta editando un todo...
     if (!todoUpdated.id) {
       setTodos([...todos, newTodo])
     } else {
-      const todosUpdated = todos.map((todo) =>
-        todo.id === newTodo.id ? newTodo : todo
-      )
+      const todosUpdated = todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
 
       setTodos(todosUpdated)
       setTodoUpdated(initialTodo)
@@ -39,8 +38,9 @@ export function ElevateDo() {
   }
 
   const handleEditTodo = (id) => {
-    const todoSelected = todos.filter((todo) => todo.id === id)
-    setTodoUpdated(todoSelected[0])
+    const todoSelected = todos.find((todo) => todo.id === id)
+
+    setTodoUpdated(todoSelected)
   }
 
   const handleCompleteTodo = (id) => {

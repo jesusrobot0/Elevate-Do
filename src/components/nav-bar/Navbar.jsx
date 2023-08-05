@@ -5,7 +5,7 @@ import styles from './nav-bar.module.css'
 export function Navbar({ todos, onSearch, searchQuery, setSearchQuery }) {
   return (
     <nav className={styles.navbar}>
-      <h1 className={styles.navbar__title}>EletaveDo</h1>
+      <h1 className={styles.navbar__title}>ElevateDO</h1>
       <SearchBar
         todos={todos}
         searchQuery={searchQuery}

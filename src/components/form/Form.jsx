@@ -24,25 +24,31 @@ export function Form({ todoUpdated, onNewTodo }) {
     })
   }
 
-  const handleSubtmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (todo.title.trim() === '') {
+    const newTodo = { ...todo }
+
+    // Sí el titulo esta vacío muestra un error
+    if (newTodo.title.trim() === '') {
       setError(true)
       return
     }
 
+    // Sí no se esta editando un todo...
     if (!todoUpdated.id) {
-      todo.id = nanoid()
-      todo.date = new Date()
+      newTodo.id = nanoid()
+      newTodo.date = new Date()
     }
 
-    onNewTodo(todo)
+    // Guarda el todo en el state reinicia el form y limpia los errores
+    onNewTodo(newTodo)
     setTodo(initialTodo)
     setError(false)
   }
 
   useEffect(() => {
+    // Cuando haya un error limpialo a los 2 segundos
     let timer
     if (error) {
       timer = setTimeout(() => {
@@ -50,6 +56,7 @@ export function Form({ todoUpdated, onNewTodo }) {
       }, 2000)
     }
 
+    // Cuando el componente se desmonte limpia el timeout
     return () => {
       clearTimeout(timer)
     }
@@ -60,7 +67,7 @@ export function Form({ todoUpdated, onNewTodo }) {
   }, [todoUpdated])
 
   return (
-    <form className={styles.form} onSubmit={handleSubtmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.form__field}>
         <label htmlFor="title" className={styles.form__label}>
           Title
